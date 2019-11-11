@@ -4,6 +4,7 @@ public class OrdUser {
     private Integer idCode;
     private String account;
     private String passWord;
+    //增加其他客户信息
     private String phonenum;
 
     public Integer getIdCode() {
