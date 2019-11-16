@@ -76,11 +76,11 @@
 <body>
 
 <!--顶部导航-->
-<!-- <div id="top-part"></div>
+<div id="top-part"></div>
    
 
 
-<script>
+<!-- <script>
     $('#login').focus(function(){
         window.location.href="top-part.html";
     })
@@ -130,7 +130,7 @@
             <label>
                 登录密码
             </label>
-            <input type="password" name="user.password" id="password" class="require">
+            <input type="text" name="user.password" id="password" class="require">
             <span style="color: red;font-size: 20px"> *</span>
             <span id="passwordRequierdSpan" class="requierdSpan" style="color: red;font-size: 20px"></span>
         </div>
@@ -141,7 +141,7 @@
             <label>
                 密码确认
             </label>
-            <input type="password" id="passwordAgain" class="require">
+            <input type="text" id="passwordAgain" class="require">
             <span style="color: red;font-size: 20px"> *</span>
             <span id="passwordAgainRequierdSpan" class="requierdSpan" style="color: red;font-size: 20px"></span>
         </div>
@@ -222,21 +222,23 @@
             }
         });
         
-        $("#submit").click(function(){
-            $(".require").blur();
-            var flag=true;
-            $.each($(".requierdSpan"),function(i,n){
-                if(this.innerHTML!=""){
-                    flag=false;
-                    return false;
-                }
-            });
-            if(!flag){
-                $("#message").text("数据非法请检查!");
-            }else{
-                $("#form").submit();
-            }
-        });
+        // $("#submit").click(function(){
+        //     $(".require").blur();
+        //     var flag=true;
+        //     $.each($(".requierdSpan"),function(i,n){
+        //         if(this.innerHTML!=""){
+        //             flag=false;
+        //             return false;
+        //         }
+        //     });
+        //     if(!flag){
+        //         $("#message").text("数据非法请检查!");
+        //     }else{
+        //         $("#form").submit();
+        //     }
+        // });
+
+
         // if (result=="注册失败") {//注册失败
         //                 if(code==1){
         //                     tip.innerHTML = "密码错误!"
@@ -247,13 +249,11 @@
         //                 window.location.href="index.html";//跳转到centent.html页面
         
         
-    //     $('#submit').focus(function(){
-    //     window.location.href="index.html";
-    // })           
+        
     });
     
 </script>
-<script>
+<!-- <script>
     // $(function () {
     // var urlPrefix="http://172.22.107.137:8089"; //接口地址前缀
     // $.ajax({
@@ -309,13 +309,69 @@ xmlhttp.onreadystatechange=function(){
                     // }else 
                     //登录成功   
                     
-                         window.location.href="index.html";//跳转到centent.html页面 -->
+                         window.location.href="index.html";//跳转到centent.html页面 
                    
-          }
+          }-->
 
- xmlhttp.open("POST","http://192.168.137.220:8089/register?",true);//以POST方式请求该接口
+ <!-- xmlhttp.open("POST","http://192.168.137.220:8089/register?",true);//以POST方式请求该接口
  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");//添加Content-type
- xmlhttp.send("account="+adminName+"&passWord="+psw);//发送请求参数间用&分割
+ xmlhttp.send("account="+adminName+"&passWord="+psw);//发送请求参数间用&分割 -->
+<!-- </script> --> 
+<script type="text/javascript">
+    
+    $("#submit").on("click",function(){  
+        // var account = $("#name").serialize(); 
+        // var passWord = $("#password").serialize();
+   $.ajax({
+       method:'POST',
+       url:'http://172.22.107.137:8089/register',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
+       data:{
+         account:$("#name").val(),
+         passWord:$("#password").val()
 
-</script>
+
+       },  //发起请求时所附带的参数
+       
+       success:function(data) {
+        console.log(data)
+        alert("注册成功");
+        //alert("account: " + account + "passWord: " + passWord);
+    //     var str = [];
+    // for (var account in data) {
+    //     str.push(encodeURIComponent(account) + "=" + encodeURIComponent(data[account]));
+    // }
+    // for (var password in data) {
+    //     str.push(encodeURIComponent(password) + "=" + encodeURIComponent(data[password]));
+    // }
+    // return str.join("&");
+        window.location.href="index.html";
+       //请求成功后的回调函数。当data为JSON格式时，可能需要使用JSON.parse(data)进行解析
+       
+       }
+    
+   })
+    })
+   </script>
+//    <!-- <script>
+//     $(document).ready(function(){
+//         $("submit").click(function(){
+//             $.ajax({
+//        method:'POST',
+//        url:'http://172.22.107.137:8089/register',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
+//        data:{
+//          account:$("#name").val(),
+//          passWord:$("#password").val()
+
+//        },  //发起请求时所附带的参数
+//        success:function(data) {
+//         console.log(data)
+//         alert("注册成功");
+//         alert("account: " + name + "passWord: " + password);
+//         window.location.href="index.html";
+//        }//请求成功后的回调函数。当data为JSON格式时，可能需要使用JSON.parse(data)进行解析
+    
+//    })
+//         });
+//     });
+//     </script> -->
 </html>
