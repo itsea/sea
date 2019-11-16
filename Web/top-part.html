@@ -88,9 +88,7 @@
         <li  class="list-group-item list1" style="visibility: visible" id="1">登录【<a href="" data-toggle="modal" data-target="#myModalLogin" style="font-size: small;color:#e4393c ">请登录</a>】</li>
         <li role="presentation" class="dropdown list-group-item list1">
             <a  id="2"class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="display:none">
-                <text id="un">
-                    123
-                </text>,欢迎登录
+                <text id="un"></text>,欢迎登录
             </a>
             <ul class="dropdown-menu">
                 <li><a href="user.html">个人设置</a></li>
@@ -98,6 +96,19 @@
                 <li><a href="#">退出</a></li>
             </ul>
         </li>
+
+        <!-- <li class="list-group-item list1">登录【<a href="" data-toggle="modal" data-target="#myModalLogin" style="font-size: small;color:#e4393c ">请登录</a>】</li>
+        <li role="presentation" class="dropdown list-group-item list1">
+            <a  id="2"class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="display:none">
+                <text id="un"></text>,欢迎登录
+            </a>
+        <ul class="dropdown-menu">
+            <li><a href="user.html">个人设置</a></li>
+            <li><a href="#">切换账号</a></li>
+            <li><a href="#">退出</a></li>
+        </ul>
+    </li> -->
+
         <li class="list-group-item list1"><a href="register.html" id="3"> 注册</a></li>
         <li class="list-group-item list1"><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#c63205"></span> 购物车</a></li>
         <li class="list-group-item list1"><a href="order.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 我的订单</a></li>
@@ -106,7 +117,9 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                     <h4 class="modal-title" id="myModalLabel">欢迎登录</h4>
                 </div>
                 <div class="modal-body">
@@ -134,28 +147,30 @@
 <script type="text/javascript">
     
  $("#btn").on("click",function(){  
-var account ;
-var passWork;
 $.ajax({
     method:'GET',
-    url:'http://192.168.137.220:8089/login',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
+    url:'http://192.168.43.237:8089/login',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
     data:{
       account:$("#username").val(),
       passWord:$("#userpwd").val()
     },  //发起请求时所附带的参数
     success:function(data) {
-        alert("登录成功");
-        
+        console.log(data)
+        $("#un").html(data.data.account);
+        //alert("登录成功");
+        //window.location.href="index.html";
+        // $(document).ready (function(){
     
         //$(document).ready (function(){
         //>window.location.href="index.html";
         $("#1").css("display","none");
-        //>$("#un").html(data.account);
+        //$("#un").html(data.account);
         $("#2").css("display","visible");
         $("#3").css("display","none");
         $(".modal fade").css("display","none");
    
-        //>})
+        
     }//请求成功后的回调函数。当data为JSON格式时，可能需要使用JSON.parse(data)进行解析
-  });} )
+  });
+})
 </script>
