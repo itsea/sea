@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .container {
+            /*background: cornsilk;*/
+        }
+
+        form{
+            margin:80px auto 0;
+            padding-bottom:50px;
+        }
+        form .input-row{
+            padding-left: 80px;
+            position: relative;
+            line-height: 40px;
+
+        }
+        form .input-row label{
+            display:inline-block;
+            width: 68px;
+            text-align: right;
+            margin-left:300px;
+
+        }
+        form .input-row input{
+            height: 35px;
+            border-radius: 4px;
+            width:300px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            text-indent: 10px;
+        }
+        #submit{
+            width:370px;
+            background-color: #29b329;
+            color: #fff;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 5px;
+            margin: 20px 0 0 380px;
+            font-size: 18px;
+            text-align:center;
+            display: block;
+            text-decoration: none;
+        }
+        #submit:active{
+            background-color: #36cfda;
+        }
+        .mmqd{
+            width: 290px;
+            height: 30px;
+            background-color:#97daeb;
+            line-height: 30px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .active{
+            background-color: #6bc9e0;
+        }
+        .mmqd em{
+            display: inline-block;
+            width: 33.333%;
+            text-align: center;
+            color: #fff;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<!--顶部导航-->
+<!-- <div id="top-part"></div>
+   
+
+
+<script>
+    $('#login').focus(function(){
+        window.location.href="top-part.html";
+    })
+</script> -->
+
+
+<!-- 弹出登录界面 -->
+<div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">欢迎登录</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form">
+                    <div class="name">
+                        <label for="username"><span class="glyphicon glyphicon-user"></span></label>
+                        <input type="text" placeholder="用户名" id="username" >
+                    </div>
+                    <div class="password">
+                        <label for="userpwd"><span class="glyphicon glyphicon-lock"></span></label>
+                        <input type="text" placeholder="请输入密码"  id="userpwd">
+                    </div>
+                    
+                    <div class="buts">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-success" >登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form action="base/home/register.action" method="post" id="form">
+        <div class="input-row">
+            <label>
+                用户名
+            </label>
+            <input type="text" name="user.userName" id="name" class="require">
+            <span style="color: red;font-size: 20px"> *</span>
+            <span id="nameRequierdSpan" class="requierdSpan" style="color: red;font-size: 20px"></span>
+        </div>
+        <div class="input-row">
+            <label>
+                登录密码
+            </label>
+            <input type="password" name="user.password" id="password" class="require">
+            <span style="color: red;font-size: 20px"> *</span>
+            <span id="passwordRequierdSpan" class="requierdSpan" style="color: red;font-size: 20px"></span>
+        </div>
+        <div class="mmqd" style="margin-left: 455px">
+            <em class="active">弱</em><em>中</em><em>强</em>
+        </div>
+        <div class="input-row">
+            <label>
+                密码确认
+            </label>
+            <input type="password" id="passwordAgain" class="require">
+            <span style="color: red;font-size: 20px"> *</span>
+            <span id="passwordAgainRequierdSpan" class="requierdSpan" style="color: red;font-size: 20px"></span>
+        </div>
+        
+        <a href="javascript:void(0);" id="submit">立即注册</a>
+    </form>
+</div>
+
+
+</body>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $("#top-part").load("top-part.html");
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#name").blur(function() {
+            var name = this.value;
+            name = $.trim(name);
+            if (name == "") {
+                $("#nameRequierdSpan").text("用户名不能为空");
+            } else {
+                if(name.length<2 || name.length>10){
+                    $("#nameRequierdSpan").text("用户名要在2到10位之间");
+                }else{
+                    $.get("base/home/checkName.action",{"_":new Date().getTime(),"user.userName":name},function(data){
+                        var jsonArray = eval("(" + data + ")");
+                        if(jsonArray.success){
+                            $("#nameRequierdSpan").text("");
+                        }else{
+                            $("#nameRequierdSpan").text("用户名已经存在");
+                        }
+                    });
+                }
+            }
+        });
+        var aEm=document.getElementsByTagName('em');
+        var pwd=document.getElementById("password");
+        pwd.onkeyup=function(){
+            if(this.value.length>6){
+                aEm[1].className="active";
+            }else {
+                aEm[1].className="";
+            }
+            if(this.value.length>15){
+                aEm[2].className="active";
+            }else {
+                aEm[2].className="";
+            }
+        }
+        $("#password").blur(function() {
+            var password=this.value;
+            password=$.trim(password);
+            if(password==""){
+                $("#passwordRequierdSpan").text("密码不能为空");
+            }else{
+                if(password.length<6 || password.length>12){
+                    $("#passwordRequierdSpan").text("密码要在6到12位之间");
+                }else{
+                    var regExp = /^[A-Za-z0-9]+$/;
+                    var ok = regExp.test(password);
+                    if(!ok){
+                        $("#passwordRequierdSpan").text("密码不能含有特殊字符");
+                    }else{
+                        $("#passwordRequierdSpan").text("");
+                    }
+                }
+            }
+        });
+        $("#passwordAgain").blur(function(){
+            var passwordAgain=this.value;
+            var password=$("#password").val();
+            if(passwordAgain==password){
+                $("#passwordAgainRequierdSpan").text("");
+            }else{
+                $("#passwordAgainRequierdSpan").text("确认密码与密码不符");
+            }
+        });
+        
+        $("#submit").click(function(){
+            $(".require").blur();
+            var flag=true;
+            $.each($(".requierdSpan"),function(i,n){
+                if(this.innerHTML!=""){
+                    flag=false;
+                    return false;
+                }
+            });
+            if(!flag){
+                $("#message").text("数据非法请检查!");
+            }else{
+                $("#form").submit();
+            }
+        });
+        // if (result=="注册失败") {//注册失败
+        //                 if(code==1){
+        //                     tip.innerHTML = "密码错误!"
+        //                 //}else if(code==1004){
+        //                   //  tip.innerHTML = "用户不存在!"
+        //                 }
+        //             }else //注册成功        if(result=="success"&&code==100){
+        //                 window.location.href="index.html";//跳转到centent.html页面
+        
+        
+    //     $('#submit').focus(function(){
+    //     window.location.href="index.html";
+    // })           
+    });
+    
+</script>
+<script>
+    // $(function () {
+    // var urlPrefix="http://172.22.107.137:8089"; //接口地址前缀
+    // $.ajax({
+    // type: "GET",
+    // url: `${urlPrefix}/login`,
+    
+    // "errcode": 0,
+    // "errmsg": "成功",
+    // "data": {
+    //     "content": {
+    //         "account": "123",
+    //         "passWord": "123",
+    //         "idcode": 1000
+    //     }
+    // }
+
+    // });
+    // })
+    
+    
+    var xmlhttp;
+if (window.XMLHttpRequest){//IE7+, Firefox, Chrome, Opera, Safari
+       xmlhttp=new XMLHttpRequest();
+}
+else{// IE6, IE5
+       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+//上面的http请求对象的生成做了一个浏览器兼容性处理
+var adminName = document.getElementById('name').value;//获取html表单中adminName输入域对象的值，既账号
+var psw = document.getElementById('password').value;//获取html表单中pwd输入域对象的值，既密码          
+ 
+xmlhttp.onreadystatechange=function(){
+//当接受到响应时回调该方法
+     //var urlPrefix="http://172.22.107.137:8089";
+        if (xmlhttp.readyState==4 && (xmlhttp.status==200||xmlhttp.status==0))
+        {
+                    var tip = document.getElementById('tip');//获取html的tip节点，主要用于输出登录结果
+                    var text = xmlhttp.responseText;//使用接口返回内容，响应内容
+                    var resultJson = eval("("+text+")");//把响应内容对象转成javascript对象
+                    //var account = resultJson.account;//获取json中的result键对应的值
+                    var code=resultJson.code;
+                    //var password = resultJson.password;
+                    //console.log(account);
+                    console.log(code);
+                    //var code = resultJson.code;//获取json中的code键对应的值
+                    // if (result=="登录失败") {//登录失败
+                    //     if(code==1){
+                    //         tip.innerHTML = "密码错误!"
+                    //     //}else if(code==1004){
+                    //       //  tip.innerHTML = "用户不存在!"
+                    //     }var adminName = document.getElementById('username').value;//获取html表单中adminName输入域对象的值，既账号
+                             //var psw = document.getElementById('userpwd').value;//获取html表单中pwd输入域对象的值，既密码
+                    // }else 
+                    //登录成功   
+                    
+                         window.location.href="index.html";//跳转到centent.html页面 -->
+                   
+          }
+
+ xmlhttp.open("POST","http://192.168.137.220:8089/register?",true);//以POST方式请求该接口
+ xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");//添加Content-type
+ xmlhttp.send("account="+adminName+"&passWord="+psw);//发送请求参数间用&分割
+
+</script>
+</html>
