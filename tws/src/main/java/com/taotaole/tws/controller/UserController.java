@@ -26,6 +26,8 @@ public class UserController {
             ordUser.setAccount(account);
             ordUser.setPassWord(passWord);
             //判断
+
+
             ordUserMapper.insertUser(ordUser);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("id", ordUser.getIdCode());

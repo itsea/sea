@@ -14,12 +14,16 @@ import java.util.List;
 public interface UserSearchMapper {
 
 
-    //获取用户上传的商品列表
+    //获取商品列表(根据上传用户的id)
     @Select("select * from Commdetail where idCode=#{idCode}")//and passWord=#{password}
     public List<CommDetail> selectUserUploadlist(Integer idCode);
 
     //获得用户已购买的列表
     @Select("select * from Commodity where idCode=#{idCode}")//and passWord=#{password}
-    public List<Commodity> selectUserBuylist(Integer idCode);
+    public List<Commodity> selectUserCommoditylist(Integer idCode);
+
+    //获取商品列表(根据订单的商品id)
+    @Select("select * from Commdetail where cidcode=#{cidcode}")//and passWord=#{password}
+    public CommDetail selectUserBuylist(Integer cidcode);
 
 }
