@@ -2,10 +2,7 @@ package com.taotaole.tws.mapper;
 
 import com.taotaole.tws.bean.CommDetail;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,16 +11,17 @@ import java.util.List;
 //@Component(value = "apiCategoryMapper")
 public interface CommDetailMapper {
 
-    @Options(useGeneratedKeys = true,keyProperty = "cidcode")
-    @Select("select * from Commdetail")
+    //@Options(useGeneratedKeys = true,keyProperty = "cidcode")
+    @Select("select * from CommDetail")
     public List<CommDetail> selectComm();
-
-    @Options(useGeneratedKeys = true,keyProperty = "cidcode")
-    @Select("select * from CommDetail where cidcode=#{cidcode}")
-    public CommDetail selectCommByID(Integer cidcode);
 
     @Options(useGeneratedKeys = true,keyProperty = "cidcode")
     @Insert("insert into commdetail(cname,ctitle,orgprice,cprice,cquality,caddress,cdeal,cnum,idcode) values(#{cname},#{ctitle},#{orgprice},#{cprice},#{cquality},#{caddress},#{cdeal},#{cnum},#{idcode})")
     public int insertComm(CommDetail commDetail);
+//订单的改查数据库
+    @Select("select * from commdetail where cidcode=#{cidcode}")
+    public CommDetail selectOrderComm(Integer cidcode);
 
+    @Update("update commdetail set cnum=cnum-1 where cidcode=#{cidcode}")
+    public int updateComm(Integer cidcode);
 }
