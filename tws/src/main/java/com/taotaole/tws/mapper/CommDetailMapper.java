@@ -16,7 +16,7 @@ public interface CommDetailMapper {
     public List<CommDetail> selectComm();
 
     @Options(useGeneratedKeys = true,keyProperty = "cidcode")
-    @Insert("insert into commdetail(cname,ctitle,orgprice,cprice,cquality,caddress,cdeal,cnum,idcode) values(#{cname},#{ctitle},#{orgprice},#{cprice},#{cquality},#{caddress},#{phone},#{cnum},#{idcode})")
+    @Insert("insert into commdetail(cname,ctitle,orgprice,cprice,cquality,caddress,phone,cnum,idcode) values(#{cname},#{ctitle},#{orgprice},#{cprice},#{cquality},#{caddress},#{phone},#{cnum},#{idcode})")
     public int insertComm(CommDetail commDetail);
 //订单的改查数据库
     @Select("select * from commdetail where cidcode=#{cidcode}")

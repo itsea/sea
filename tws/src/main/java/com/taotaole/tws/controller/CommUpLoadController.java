@@ -24,7 +24,7 @@ public class CommUpLoadController {
                                        @RequestParam("cprice") double cprice,
                                        @RequestParam("cquality") String cquality,
                                        @RequestParam("caddress") String caddress,
-                                       @RequestParam("cdeal") String phone,
+                                       @RequestParam("phone") String phone,
                                        @RequestParam("cnum") Integer cnum,
                                        @RequestParam("idcode") Integer idcode){
         try{
@@ -44,7 +44,7 @@ public class CommUpLoadController {
 
                 commDetailMapper2.insertComm(commDetail);
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("cidcode", commDetail.getCidcode());
+                map.put("goods", commDetail);
                 return ResultTool.result(200, "", map);
 
             }catch (Exception e1){return ResultTool.result(101, "", null);}
