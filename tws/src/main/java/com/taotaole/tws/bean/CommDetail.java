@@ -7,10 +7,11 @@ public class CommDetail {
     private double orgprice;
     private double cprice;
     private String cquality;
+    private String caddress;
     private String cdeal;
-    public Integer cnum;
+    private Integer cnum;
     private Integer idcode;
-    
+
     public Integer getCidcode() {
         return cidcode;
     }
@@ -59,6 +60,13 @@ public class CommDetail {
         this.cquality = cquality;
     }
 
+    public String getCaddress() {
+        return caddress;
+    }
+
+    public void setCaddress(String caddress) {
+        this.caddress = caddress;
+    }
 
     public String getCdeal() {
         return cdeal;
