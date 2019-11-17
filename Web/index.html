@@ -484,7 +484,7 @@
         <div class="col-md-3">
             <ul class="list-group list-group-2">
                 <li class="list-group-item"><img src="images/4.jpg" alt=""></li>
-                <li class="list-group-item"><img src="images/5.jpg" alt=""></li>
+                <li class="list-group-item"><img src="images/8.jpg" alt=""></li>
             </ul>
         </div>
     </div>
@@ -512,16 +512,25 @@
             </div>
         </div>
         <div class="col-md-3">
-            <a href="goodsinfo.html"><img src="images/4.jpg" alt=""></a>
+            <a href="goodsinfo.html"><img src="images/5.jpg" alt=""></a>
+            <text id="T-shirt" ></text>
+            <div  id="Price0"></div>
+            
         </div>
         <div class="col-md-3">
-            <img src="images/5.jpg" alt="">
+            <a href="goodsinfo2.html"><img src="images/9.jpg" alt=""></a>
+            <span id="yunifan">御泥坊</span>
+            <span id="Price1">￥209.0</span>
         </div>
         <div class="col-md-3">
-            <img src="images/7.jpg" alt="">
+            <a href="goodsinfo3.html"><img src="images/10.jpg" alt=""></a>
+            <span id="hfp">护肤品</spanid="yunifan">
+            <span id="Price2">￥218.0</span>
         </div>
         <div class="col-md-3">
-            <img src="images/6.jpg" alt="">
+            <a href="goodsinfo4.html"><img src="images/11.jpg" alt=""></a>
+            <span id="uck">uck面膜</span>
+            <span id="Price3">￥200.0</span>
         </div>
     </div>
     <!--第四块，特价商品-->
@@ -548,16 +557,24 @@
             </div>
         </div>
         <div class="col-md-3">
-            <img src="images/4.jpg" alt="">
+            <a href="goodsinfo5.html"><img src="images/12.jpg" alt=""></a>
+            <span id="zirtmmo">自然堂面膜</span>
+            <span id="Price4">￥320.0</span>
         </div>
         <div class="col-md-3">
-            <img src="images/5.jpg" alt="">
+            <a href="goodsinfo6.html"><img src="images/13.jpg" alt=""></a>
+            <span id="zhuoshin">卓诗尼凉鞋</span>
+            <span id="Price4">￥56</span>
         </div>
         <div class="col-md-3">
-            <img src="images/7.jpg" alt="">
+            <a href="goodsinfo7.html"><img src="images/14.jpg" alt=""></a>
+            <span id="nvshixie">女士鞋</span>
+            <span id="Price5">￥78.0</span>
         </div>
         <div class="col-md-3">
-            <img src="images/6.jpg" alt="">
+            <a href="goodsinfo8.html"><img src="images/15.jpg" alt=""></a>
+            <span id="yuzuixie">鱼嘴鞋</span>
+            <span id="Price6">￥90</span>
         </div>
     </div>
     <!--第五块，最新商品-->
@@ -584,16 +601,24 @@
             </div>
         </div>
         <div class="col-md-3">
-            <img src="images/4.jpg" alt="">
+            <a href="goodsinfo9.html"><img src="images/16.jpg" alt=""></a>
+            <span id="nvshitxie">女式拖鞋</span>
+            <span id="Price7">￥64.0</span>
         </div>
         <div class="col-md-3">
-            <img src="images/5.jpg" alt="">
+            <a href="goodsinfo10.html"><img src="images/17.jpg" alt=""></a>
+            <span id="ME">ME包</span>
+            <span id="Price8">￥260.0</span>
         </div>
         <div class="col-md-3">
-            <img src="images/7.jpg" alt="">
+            <a href="goodsinfo11.html"><img src="images/18.jpg" alt=""></a>
+            <span id="blue">blue小包</span>
+            <span id="Price9">￥109.0</span>
         </div>
         <div class="col-md-3">
-            <img src="images/6.jpg" alt="">
+            <a href="goodsinfo12.html"><img src="images/19.jpg" alt=""></a>
+            <span id="madingxie">马丁靴</span>
+            <span id="Price10">￥140.0</span>
         </div>
     </div>
 </div>
@@ -620,4 +645,36 @@
     $("#top-part").load("top-part.html");
     $("#search-part").load("search-part.html");
 </script>
+
+ <!-- $("#T-shirt").click(function(){
+        var td=$(this);
+        var cname="";
+            for(var i=0;i<data.length;i++){
+
+                var ls =data[i];
+                cname+="+ls.cname+"
+            }
+            
+
+    }) -->
+<script type="text/javascript">
+
+    $.ajax({
+        method:'GET',
+        url:'http://172.22.107.137:8089/goodslist',
+        
+        success:function(data){
+            console.log(data)
+            
+            $("#T-shirt").html(data.data.goods[0].cname);
+            $("#Price0").css("color","red").html("￥"+data.data.goods[0].cprice);
+            
+
+        }
+
+    });
+   
+
+  
+    </script>
 </html>

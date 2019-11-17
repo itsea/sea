@@ -149,7 +149,7 @@
  $("#btn").on("click",function(){  
 $.ajax({
     method:'GET',
-    url:'http://192.168.43.237:8089/login',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
+    url:'http://172.22.107.137:8089/login',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
     data:{
       account:$("#username").val(),
       passWord:$("#userpwd").val()
@@ -157,6 +157,7 @@ $.ajax({
     success:function(data) {
         console.log(data)
         $("#un").html(data.data.account);
+        //>$.cookie('UserName',username);
         //alert("登录成功");
         //window.location.href="index.html";
         // $(document).ready (function(){
