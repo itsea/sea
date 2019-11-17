@@ -19,25 +19,25 @@ public class CommUpLoadController {
 
     @PostMapping("/upload")
     public ResultModel insertCommodity(@RequestParam("cname") String cname,
-                                       @RequestParam("ctitle") String ctitle
-                                      /* @RequestParam("orgprice") double orgprice,
+                                       @RequestParam("ctitle") String ctitle,
+                                       @RequestParam("orgprice") double orgprice,
                                        @RequestParam("cprice") double cprice,
                                        @RequestParam("cquality") String cquality,
                                        @RequestParam("caddress") String caddress,
                                        @RequestParam("cdeal") String cdeal,
                                        @RequestParam("cnum") Integer cnum,
-                                       @RequestParam("idcode") Integer idcode*/){
+                                       @RequestParam("idcode") Integer idcode){
         try{
             CommDetail commDetail=new CommDetail();
             commDetail.setCname(cname);
             commDetail.setCtitle(ctitle);
-            /*commDetail.setOrgprice(orgprice);
+            commDetail.setOrgprice(orgprice);
             commDetail.setCprice(cprice);
             commDetail.setCquality(cquality);
             commDetail.setCaddress(caddress);
             commDetail.setCdeal(cdeal);
             commDetail.setCnum(cnum);
-            commDetail.setIdcode(idcode);*/
+            commDetail.setIdcode(idcode);
 
             try {
 

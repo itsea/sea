@@ -1,7 +1,7 @@
 package com.taotaole.tws.controller;
 
 import com.taotaole.tws.bean.CommDetail;
-import com.taotaole.tws.bean.CommOrder;
+//import com.taotaole.tws.bean.CommOrder;
 import com.taotaole.tws.mapper.CommodityMapper;
 import com.taotaole.tws.result.ResultModel;
 import com.taotaole.tws.result.ResultTool;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 public class OrderCommController {
-    @Autowired
+/*    @Autowired
     public CommodityMapper commodityMapper;
 
     @PostMapping("/order")
@@ -30,5 +30,5 @@ public class OrderCommController {
             map.put("id",commOrder.getCid() );
             return ResultTool.result(200, "", map);
         }catch(Exception e){return ResultTool.result(404,"",null);}
-    }
+    }*/
 }
