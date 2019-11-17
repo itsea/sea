@@ -1,11 +1,9 @@
 package com.taotaole.tws.mapper;
 
 import com.taotaole.tws.bean.CommDetail;
-import com.taotaole.tws.bean.Commodity;
-import com.taotaole.tws.bean.OrdUser;
+import com.taotaole.tws.bean.CommOrder;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -20,7 +18,7 @@ public interface UserSearchMapper {
 
     //获得用户已购买的列表
     @Select("select * from Commodity where idCode=#{idCode}")//and passWord=#{password}
-    public List<Commodity> selectUserCommoditylist(Integer idCode);
+    public List<CommOrder> selectUserCommoditylist(Integer idCode);
 
     //获取商品列表(根据订单的商品id)
     @Select("select * from Commdetail where cidcode=#{cidcode}")//and passWord=#{password}

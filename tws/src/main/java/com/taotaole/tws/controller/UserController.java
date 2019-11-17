@@ -39,7 +39,7 @@ public class UserController {
     }
 //个人信息
     @GetMapping("/userdetail")
-    public ResultModel insertUser(@RequestParam("idCode") Integer idCode){
+    public ResultModel insertUser(@RequestParam("idcode") Integer idCode){
         try {
             OrdUser ordUser;// = new OrdUser();
             //判断有无该用户

@@ -1,9 +1,7 @@
 package com.taotaole.tws.controller;
 
 import com.taotaole.tws.bean.CommDetail;
-import com.taotaole.tws.bean.Commodity;
-import com.taotaole.tws.bean.OrdUser;
-import com.taotaole.tws.mapper.OrdUserMapper;
+import com.taotaole.tws.bean.CommOrder;
 import com.taotaole.tws.mapper.UserSearchMapper;
 import com.taotaole.tws.result.ResultModel;
 import com.taotaole.tws.result.ResultTool;
@@ -14,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @CrossOrigin
 @RestController
 public class UserSearch {
@@ -23,7 +22,7 @@ public class UserSearch {
 
      //获取用户上传的商品列表
     @GetMapping("/selllist")
-   public ResultModel sellList(@RequestParam("idCode") Integer idCode){
+   public ResultModel sellList(@RequestParam("idcode") Integer idCode){
 
        try {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -38,31 +37,33 @@ public class UserSearch {
 
     //获得用户已购买的列表
     @GetMapping("/buylist")
-    public ResultModel buyList(@RequestParam("idCode") Integer idCode){
+    public ResultModel buyList(@RequestParam("idcode") Integer idCode){
         try {
             //获取用户订单
-            List<Commodity> commodityList=userSearchMapper.selectUserCommoditylist(idCode);
+            List<CommOrder> commodityList=userSearchMapper.selectUserCommoditylist(idCode);
             //List<Integer> list = new ArrayList<String>();
 
 
-           //根据订单中的商品id获取商品信息
+   //根据订单中的商品id获取商品信息
 
             CommDetail commDetail ;
             Map<String, Object> map = new HashMap<String, Object>();
             List<CommDetail> buylist=new ArrayList<CommDetail>();
-
+            List list = new ArrayList();
 
             for(int i = 0; i < commodityList.size();i++)
             {
 
             commDetail =userSearchMapper.selectUserBuylist(commodityList.get(i).getCidcode());
 
-            buylist.add(commDetail);
+                Map<String, Object> map1 = new HashMap<String, Object>();
+                //buylist.add(commDetail);
+                map1.put("CId",commodityList.get(i).getCid());
+                map1.put("commodity",commDetail);
+                list.add(map1);
 
-            }
-            map.put("list",buylist);
-
-
+        }
+            map.put("list",list);
 
             return ResultTool.result(200, "", map);
         }catch (Exception e){

@@ -38,12 +38,12 @@ public class CommController {
     }
 
     //商品detail
-    @GetMapping("/goodslist/detail")
+    @GetMapping("/goodsdetail")
     public ResultModel selectdetail(@RequestParam("cidcode") Integer cidcode){
 
         try {
             Map<String, Object> map = new HashMap<String, Object>();
-            CommDetail commDetails =commDetailMapper.selectCommByID(cidcode);
+            CommDetail commDetails =commDetailMapper.selectOrderComm(cidcode);
             map.put("goods", commDetails);
 
             return ResultTool.result(200, "", map);
