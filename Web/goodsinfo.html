@@ -93,8 +93,8 @@
                     <table class="table table-info">
                         <tbody>
                             <tr>
-                                <td class="col-xs-2">Tanmay</td>
-                                <td class="col-xs-10" id="T-s">休闲修身夏季女士V领半袖打底衫莱卡纯棉韩版体恤</td>
+                                <td class="col-xs-2">商品名称</td>
+                                <td class="col-xs-10" id="T-s"></td>
                             </tr>
                             <tr>
                                 <td>Sachin</td>
@@ -130,7 +130,7 @@
                             <tr>
                                 <td colspan="2"  style="text-align: left;text-indent: 40px">
                                     <button type="button" class="btn btn-info" onclick="javascript:window.location.href='jiesuan.html';">购买</button>
-                                    <button type="button" class="btn btn-info"  id ="button1"onclick="alert">加入购物车</button>
+                                    <!-- <button type="button" class="btn btn-info"  id ="button1"onclick="alert">加入购物车</button> -->
                                 </td>
                             </tr>
                         </tbody>
@@ -183,7 +183,7 @@
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
-                                    <img src="images/4.jpg" alt="">图片休闲修身夏季女士V领半袖打底衫莱卡纯棉韩版体恤
+                                    <img src="images/4.jpg" alt="">图片夏季女士莱卡纯棉韩版体恤
                                 </div>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
 </script>
 <script type="text/javascript">
     $("#top-part").load("top-part.html");
-    //$("#search-part").load("search-part.html"); 
+    //$("#search-part").load("search-part.html");  
 
     $.ajax({
         method:'GET',
@@ -208,7 +208,7 @@
         data:{cidcode:1000},
         success:function(data){
             console.log(data)
-            $("#T-s").html(data.data.goods.cname);
+           $("#T-s").html(data.data.goods.cname);
            
             
 

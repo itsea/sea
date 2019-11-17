@@ -519,18 +519,18 @@
         </div>
         <div class="col-md-3">
             <a href="goodsinfo2.html"><img src="images/9.jpg" alt=""></a>
-            <span id="yunifan">御泥坊</span>
-            <span id="Price1">￥209.0</span>
+            <span id="yunifan"></span>
+            <span id="Price1"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo3.html"><img src="images/10.jpg" alt=""></a>
-            <span id="hfp">护肤品</spanid="yunifan">
-            <span id="Price2">￥218.0</span>
+            <span id="hfp"></span>
+            <span id="Price2"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo4.html"><img src="images/11.jpg" alt=""></a>
-            <span id="uck">uck面膜</span>
-            <span id="Price3">￥200.0</span>
+            <span id="uck"></span>
+            <span id="Price3"></span>
         </div>
     </div>
     <!--第四块，特价商品-->
@@ -558,23 +558,23 @@
         </div>
         <div class="col-md-3">
             <a href="goodsinfo5.html"><img src="images/12.jpg" alt=""></a>
-            <span id="zirtmmo">自然堂面膜</span>
-            <span id="Price4">￥320.0</span>
+            <span id="zirtmmo"></span>
+            <span id="Price4"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo6.html"><img src="images/13.jpg" alt=""></a>
-            <span id="zhuoshin">卓诗尼凉鞋</span>
-            <span id="Price4">￥56</span>
+            <span id="zhuoshin"></span>
+            <span id="Price5"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo7.html"><img src="images/14.jpg" alt=""></a>
-            <span id="nvshixie">女士鞋</span>
-            <span id="Price5">￥78.0</span>
+            <span id="nvshiliangxie"></span>
+            <span id="Price6"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo8.html"><img src="images/15.jpg" alt=""></a>
-            <span id="yuzuixie">鱼嘴鞋</span>
-            <span id="Price6">￥90</span>
+            <span id="yuzuixie"></span>
+            <span id="Price7"></span>
         </div>
     </div>
     <!--第五块，最新商品-->
@@ -602,23 +602,23 @@
         </div>
         <div class="col-md-3">
             <a href="goodsinfo9.html"><img src="images/16.jpg" alt=""></a>
-            <span id="nvshitxie">女式拖鞋</span>
-            <span id="Price7">￥64.0</span>
+            <span id="nvshitxie"></span>
+            <span id="Price8"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo10.html"><img src="images/17.jpg" alt=""></a>
-            <span id="ME">ME包</span>
-            <span id="Price8">￥260.0</span>
+            <span id="ME"></span>
+            <span id="Price9"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo11.html"><img src="images/18.jpg" alt=""></a>
-            <span id="blue">blue小包</span>
-            <span id="Price9">￥109.0</span>
+            <span id="blue"></span>
+            <span id="Price10"></span>
         </div>
         <div class="col-md-3">
             <a href="goodsinfo12.html"><img src="images/19.jpg" alt=""></a>
-            <span id="madingxie">马丁靴</span>
-            <span id="Price10">￥140.0</span>
+            <span id="madingxie"></span>
+            <span id="Price11"></span>
         </div>
     </div>
 </div>
@@ -665,10 +665,49 @@
         
         success:function(data){
             console.log(data)
-            
             $("#T-shirt").html(data.data.goods[0].cname);
             $("#Price0").css("color","red").html("￥"+data.data.goods[0].cprice);
-            
+
+            $("#yunifan").html(data.data.goods[1].cname);
+            $("#Price1").css("color","red").html("￥"+data.data.goods[1].cprice);
+
+            $("#hfp").html(data.data.goods[2].cname);
+            $("#Price2").css("color","red").html("￥"+data.data.goods[2].cprice);
+
+            $("#uck").html(data.data.goods[3].cname);
+            $("#Price3").css("color","red").html("￥"+data.data.goods[3].cprice);
+
+            $("#zirtmmo").html(data.data.goods[4].cname);
+            $("#Price4").css("color","red").html("￥"+data.data.goods[4].cprice);
+
+            $("#zhuoshin").html(data.data.goods[5].cname);
+            $("#Price5").css("color","red").html("￥"+data.data.goods[5].cprice);
+
+            $("#nvshiliangxie").html(data.data.goods[6].cname);
+            $("#Price6").css("color","red").html("￥"+data.data.goods[6].cprice);
+
+            $("#yuzuixie").html(data.data.goods[7].cname);
+            $("#Price7").css("color","red").html("￥"+data.data.goods[7].cprice);
+
+            $("#nvshitxie").html(data.data.goods[8].cname);
+            $("#Price8").css("color","red").html("￥"+data.data.goods[8].cprice);
+
+            $("#ME").html(data.data.goods[9].cname);
+            $("#Price9").css("color","red").html("￥"+data.data.goods[9].cprice);
+
+            $("#blue").html(data.data.goods[10].cname);
+            $("#Price10").css("color","red").html("￥"+data.data.goods[10].cprice);
+
+            $("#madingxie ").html(data.data.goods[11].cname);
+            $("#Price11").css("color","red").html("￥"+data.data.goods[11].cprice);
+
+
+
+
+
+
+
+
 
         }
 
