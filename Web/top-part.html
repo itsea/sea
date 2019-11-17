@@ -82,6 +82,8 @@
     /************login弹出层样式结束********************/
 </style>
 
+
+
 <ul class="list-group list-group-1" id="top">
        
         <li class="list-group-item list1"><a href="index.html">首页</a></li>
@@ -93,7 +95,7 @@
             <ul class="dropdown-menu">
                 <li><a href="user.html">个人设置</a></li>
                 <li><a href="#">切换账号</a></li>
-                <li><a href="#">退出</a></li>
+                <li><a href="index.html" id="loginout">退出</a></li>
             </ul>
         </li>
 
@@ -110,7 +112,7 @@
     </li> -->
 
         <li class="list-group-item list1"><a href="register.html" id="3"> 注册</a></li>
-        <li class="list-group-item list1"><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#c63205"></span> 购物车</a></li>
+        <li class="list-group-item list1"><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#c63205"></span> 我的卖</a></li>
         <li class="list-group-item list1"><a href="order.html"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 我的订单</a></li>
     </ul>
     <div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -144,12 +146,57 @@
         </div>
     </div>
 </div>
+
+
+<script>
+		
+        if(localStorage.getItem("usern")!=null){
+            getStorage(); 
+   
+	}
+
+        function getStorage(){
+            //加载缓存前先将最近搜索栏清空
+            //$("#un").empty();
+            //判断缓存中是否有值
+            if(localStorage.getItem("usern")!=null){
+           // window.location.href="index.html";
+            
+            $("#un").html(localStorage.getItem("usern"));
+            console.log(localStorage.getItem("usern"));
+            $("#1").css("display","none");
+            $("#2").css("display","visible");
+        $("#3").css("display","none");
+        $(".modal fade").css("display","none");
+            }
+            else{
+                
+            }
+        }</script>
+
 <script type="text/javascript">
-    
- $("#btn").on("click",function(){  
+      var storage = window.localStorage
+ $("#btn").on("click",function(){ 
+ 	
+
+     
+    //  if(usern==""){
+	// 	//先判断一下搜索栏是否有值
+	// 	//alert("请登录");
+	// }else{}
+		//通过setItem()方法给Key为0的缓存赋值
+		
+		//调用加载缓存的方法
+       // if(localStorage.getItem(usern)!=null)
+		
+    /*   if(localStorage.getItem('usern')!=null){
+            getStorage(); 
+   
+	}*/
+        
 $.ajax({
     method:'GET',
-    url:'http://172.22.107.137:8089/login',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
+    url:'http://192.168.43.237:8089/login',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
     data:{
       account:$("#username").val(),
       passWord:$("#userpwd").val()
@@ -157,21 +204,55 @@ $.ajax({
     success:function(data) {
         console.log(data)
         $("#un").html(data.data.account);
-        //>$.cookie('UserName',username);
         //alert("登录成功");
         //window.location.href="index.html";
         // $(document).ready (function(){
     
         //$(document).ready (function(){
-        //>window.location.href="index.html";
+        window.location.href="index.html";
         $("#1").css("display","none");
         //$("#un").html(data.account);
         $("#2").css("display","visible");
         $("#3").css("display","none");
         $(".modal fade").css("display","none");
-   
         
+        //存储
+       //var usern = data.data.account;
+        //var userID = data.data.id;   
+        storage.setItem("usern",data.data.account);
+        storage.setItem("userID",data.data.id);
+	
+
+
+
+
     }//请求成功后的回调函数。当data为JSON格式时，可能需要使用JSON.parse(data)进行解析
   });
 })
+
+
+
+
+
+$("#loginout").on("click",function(){ 
+ 	
+localStorage.removeItem("usern");
+localStorage.removeItem("userID"); 
+     //  if(usern==""){
+     // 	//先判断一下搜索栏是否有值
+     // 	//alert("请登录");
+     // }else{}
+         //通过setItem()方法给Key为0的缓存赋值
+         
+         //调用加载缓存的方法
+        // if(localStorage.getItem(usern)!=null)
+         
+     /*   if(localStorage.getItem('usern')!=null){
+             getStorage(); 
+    
+     }*/
+         
+
+ })
+
 </script>

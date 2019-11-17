@@ -108,14 +108,14 @@
                     </tr>
                     <tr><td colspan="7" style="border: 0"></td></tr>
                     <tr>
-                        <td colspan="7" style="text-align: left;background-color: cornsilk">订单编号：12222212212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间：12222222222</td>
+                        <td colspan="7" style="text-align: left;background-color: cornsilk" id="order1"></td>
                     </tr>
                     <tr>
                         <td class="col-sm-1">
                             <img src="images/4.jpg" alt="">
                         </td>
-                        <td><br>商品名称商品名称</td>
-                        <td><br>颜色：<br>尺码：</td>
+                        <td id="name1"><br ></td>
+                        <td><br>颜色：蓝白色<br>尺码：M码</td>
                         <td><br>退款</td>
                         <td><br>价格<br>(包邮)</td>
                         <td><br>待发货<br>待评价</td>
@@ -123,17 +123,17 @@
                     </tr>
                     <tr><td colspan="7" style="border: 0"></td></tr>
                     <tr>
-                        <td colspan="7" style="text-align: left;background-color: cornsilk">订单编号：12222212212&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下单时间：12222222222</td>
+                        <td colspan="7" style="text-align: left;background-color: cornsilk" id="order"></td>
                     </tr>
                     <tr>
                         <td class="col-sm-1">
                            <img src="images/4.jpg" alt="">
                         </td>
-                        <td><br>商品名称商品名称</td>
+                        <td id="name2"><br ></td>
                         <td><br>颜色：<br>尺码：</td>
                         <td><br>退款</td>
                         <td><br>价格<br>(包邮)</td>
-                        <td><br>待发货<br>待评价</td>
+                         <td><br>待发货<br>待评价</br> 
                         <td><br><span class="glyphicon glyphicon-trash"></span></td>
                     </tr>
                 </tbody>
@@ -143,6 +143,8 @@
 </div>
 
 </body>
+
+
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -150,4 +152,27 @@
     $("#search-part").load("search-part.html");
     $("#userimg-part").load("userimg-part.html");
 </script>
+<script type="text/javascript">
+    $.ajax({
+        method:'GET',
+        url:'http://192.168.43.237:8089/buylist',
+        data:{idcode:localStorage.getItem("userID")},
+        success:function(data){
+            console.log(data)
+            $("#order1").html("订单编号："+data.data.list[0].CId);
+            $("#order").html("订单编号："+data.data.list[1].CId)
+            $("#name1").html("商品名称："+data.data.list[0].commodity
+            .cname );
+            $("#name2").html("商品名称："+data.data.list[1].commodity.cname );
+         
+
+        }
+
+    });
+  
+</script>
+     <!-- $("#order1").html("订单编号："+data.data.list[0].CId);
+            $("#order").html("订单编号："+data.data.list[1].CId)
+            $("#order1").html("订单编号："+data.data.list[0].CId);
+            $("#order").html("订单编号："+data.data.list[1].CId) -->
 </html>
