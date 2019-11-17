@@ -24,18 +24,19 @@ public class CommUpLoadController {
                                        @RequestParam("cprice") double cprice,
                                        @RequestParam("cquality") String cquality,
                                        @RequestParam("caddress") String caddress,
-                                       @RequestParam("cdeal") String cdeal,
+                                       @RequestParam("cdeal") String phone,
                                        @RequestParam("cnum") Integer cnum,
                                        @RequestParam("idcode") Integer idcode){
         try{
             CommDetail commDetail=new CommDetail();
+
             commDetail.setCname(cname);
             commDetail.setCtitle(ctitle);
             commDetail.setOrgprice(orgprice);
             commDetail.setCprice(cprice);
             commDetail.setCquality(cquality);
             commDetail.setCaddress(caddress);
-            commDetail.setCdeal(cdeal);
+            commDetail.setPhone(phone);
             commDetail.setCnum(cnum);
             commDetail.setIdcode(idcode);
 

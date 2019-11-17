@@ -8,7 +8,7 @@ public class CommDetail {
     private double cprice;
     private String cquality;
     private String caddress;
-    private String cdeal;
+    private String phone;
     private Integer cnum;
     private Integer idcode;
 
@@ -68,12 +68,12 @@ public class CommDetail {
         this.caddress = caddress;
     }
 
-    public String getCdeal() {
-        return cdeal;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setCdeal(String cdeal) {
-        this.cdeal = cdeal;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Integer getCnum() {
