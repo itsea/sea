@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>网上购物系统</title>
+    <title>淘物社————淘出好物</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
         .container {
@@ -70,22 +70,16 @@
             <h3 class="title">确认收货地址</h3>
             <p class="text-right"><a href="javascript:void(0);" data-toggle="modal" data-target="#myModalAddress">修改地址</a></p>
             <ul class="list-address ">
+                <!-- 填写地址 -->
                 <li class="col-sm-3 active">
-                    <h4>姓名</h4>
+                    <h4></h4>
                     <div style="padding-top: 5px">
-                        <p>址详细地址详细地址详细地址详细地址详细地址详细地址</p>
-                        <p>联动地址</p>
+                        <p></p>
+                        <p></p>
                         <p>15027100106</p>
                     </div>
                 </li>
-                <li class="col-sm-3">
-                    <h4>姓名</h4>
-                    <div style="padding-top: 5px">
-                        <p>址详细地址详细地址详细地址详细地址详细地址详细地址</p>
-                        <p>联动地址</p>
-                        <p>15027100106</p>
-                    </div>
-                </li>
+                
             </ul>
         </div>
         <div class="col-sm-12" style="margin-top: 30px">
@@ -100,21 +94,21 @@
                     </tr>
                     <tr>
                         <td class="col-sm-1">
-                            <img src="images/4.jpg" alt="">
+                            <img src="images/5.jpg" alt="">
                         </td>
-                        <td><br>商品名称商品名称</td>
-                        <td><br>颜色：<br>尺码：</td>
-                        <td><br>价格：</td>
+                        <td><br id="sid">商品名称商品名称</td>
+                        <td><br>颜色：蓝白色<br>尺码：</td>
+                        <td><br>价格：69</td>
                         <td><br>无折扣</td>
-                        <td><br>59.00</td>
+                        <td><br>69.00</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="footer">
-        共有<span style="color: #f71117 ">2</span>件商品，共计：<span style="color: #f71117;font-size: 24px">500.00</span>元
-        <button class="btn btn-warning btn-lg" onclick="window.location.href='fin-order.html'">确认并付款</button>
+        共有<span style="color: #f71117 ">1</span>件商品，共计：<span style="color: #f71117;font-size: 24px">69.00</span>元
+        <button id="jsuan" class="btn btn-warning btn-lg" onclick="window.location.href='fin-order.html'">确认并付款</button>
     </div>
 </div>
 <div class="modal fade" id="myModalAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -169,5 +163,33 @@
 <script src="js/area.js"></script>
 <script type="text/javascript">
     $("#top-part").load("top-part.html");
+
+    $("#jsuan").on("click",function(){  
+        $.ajax({
+            method:'GET',
+            url:'',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
+            data:{
+              sid:$("#sid").val(),
+              //passWord:$("#userpwd").val()
+            },  //发起请求时所附带的参数
+            success:function(data) {
+                console.log(data)
+                $("#un").html(data.data.account);
+                alert("购买成功");
+                //window.location.href="index.html";
+                // $(document).ready (function(){
+            
+                //$(document).ready (function(){
+                //>window.location.href="index.html";
+                $("#1").css("display","none");
+                //$("#un").html(data.account);
+                $("#2").css("display","visible");
+                $("#3").css("display","none");
+                $(".modal fade").css("display","none");
+           
+                
+            }//请求成功后的回调函数。当data为JSON格式时，可能需要使用JSON.parse(data)进行解析
+          });
+        })
 </script>
 </html>
