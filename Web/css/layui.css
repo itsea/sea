@@ -1,0 +1,180 @@
+.layui-form-pane .layui-form-label {
+
+    width: 80px;
+    padding: 8px 15px;
+    line-height: 20px;
+    border: 1px solid 
+
+#e6e6e6;
+
+border-radius: 2px 0 0 2px;
+
+text-align: center;
+
+background-color:
+
+    #FBFBFB;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+.layui-form-label {
+
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    width: 80px;
+    font-weight: 400;
+    text-align: right;
+
+}
+.layui-form-label, .layui-form-mid, .layui-textarea {
+
+    line-height: 20px;
+    position: relative;
+
+}
+* {
+
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: 
+
+    #333;
+
+}
+.layui-form-mid {
+
+    float: left;
+    display: block;
+    padding: 8px 0;
+    margin-right: 10px;
+
+}
+
+.layui-word-aux {
+
+    font-size: 12px;
+    color: 
+
+#999;
+}
+.layui-input, .layui-textarea {
+
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    height: 38px;
+    line-height: 38px;
+    line-height: 36px\9;
+    border: 1px solid 
+
+#e6e6e6;
+
+
+background-color:
+
+    #fff;
+    border-radius: 2px;
+
+}
+.layui-form-item::after {
+
+    content: '\20';
+    clear: both;
+    *zoom: 1;
+    display: block;
+    height: 0;
+
+}
+.input-line {
+
+    margin-top: 30px;
+
+}
+.layui-form-pane .layui-form-text .layui-form-label.good-description {
+
+    padding-left: 28px;
+
+}
+.layui-form-pane .layui-form-text .layui-form-label {
+
+    float: none;
+    width: 100%;
+    border-right: 1px solid 
+
+    #e6e6e6;
+    border-radius: 2px;
+    box-sizing: border-box !important;
+    text-align: left;
+
+}
+.layui-word-aux {
+
+    font-size: 12px;
+    color: 
+
+    #999;
+    padding: 0 5px;
+
+}
+.layui-form-item .layui-input-inline {
+
+    float: left;
+    width: 190px;
+    margin-right: 10px;
+
+}
+{
+
+    width: 390px;
+
+}
+.layui-input-block, .layui-input-inline {
+
+    position: relative;
+
+}
+.layui-form-radio i:hover, .layui-form-radioed i {
+
+    color: 
+
+    #5FB878;
+
+}
+.layui-upload-button input {
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    font-size: 100px;
+    width: 100%;
+    height: 100%;
+
+}
+.layui-form-pane .layui-input-inline {
+
+    margin-left: -1px;
+
+}
+.layui-form-pane .layui-input-block {
+
+    margin-left: 112px;
+    left: -1px;
+
+}
+.layui-input-block {
+
+    margin-left: 110px;
+    min-height: 36px;
+
+}
+.layui-input-block, .layui-input-inline {
+
+    position: relative;
+
+}

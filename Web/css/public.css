@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: #333;
+}
+
+html,
+body {
+    background-color: #f2f2f2;
+}
+
+input {
+    outline: none;
+}
+
+
+
+/*公共部分*/
+
+
+
+#main {
+    width: 1100px;
+    margin: 20px auto;
+}
+
+
+
+.notfound{
+    text-align: center;
+    padding: 200px 0;
+}
+.notfound h2{
+    font-size: 100px;
+}
+.notfound p{
+    font-size: 16px;
+}

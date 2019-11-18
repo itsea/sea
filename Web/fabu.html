@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>淘物社-发布闲置</title>
+	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="/js/lib/layui/lay/dest/layui.all.js"></script>
+<link rel="stylesheet" href="layui.css"></script>
+<link rel="stylesheet" href="public.css?v=0.1">
+<script src="/js/web/common.js"></script>
+    <link rel="stylesheet" href="publish.css">
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .container {
+            background: cornsilk;
+            padding: 20px 20px 50px;
+        }
+        img {
+            width: 100%;
+        }
+        .btn-info{
+            width: 120px;
+            margin-left: 30px;
+        }
+        table.table-info tr td{
+            font-size: 16px;
+            height: 35px;
+            line-height: 35px;
+        }
+        table.table tr td:first-child {
+            text-align: right;
+        }
+        table.table tr td:last-child {
+            text-indent: 30px;
+        }
+        .radio-row{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            margin-right: 20px;
+            position: relative;
+        }
+        .radio-row input,.radio-row input+a{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-indent: 0;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            color: #0e0e0e;
+        }
+        .radio-row input{
+            z-index: 10000;
+            opacity: 0;
+        }
+        .radio-row input+a {
+            border: 1px solid #ddd;
+        }
+        .radio-row input:checked+a {
+            border: 1px solid #c63205;
+            color: #c63205;
+        }
+        .panel-body img{
+            width: 70px;
+            height: 70px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<!--顶部导航-->
+<div id="top-part"></div>
+
+<!--主体内容-->
+<div id="main" class="clearfix">
+    <h2>发布闲置</h2>
+    <div class="publish-main layui-form layui-form-pane">
+    
+    
+            
+        <div class="layui-form-item input-line" >
+            <label class="layui-form-label">商品名称</label>
+            <div class="layui-input-inline" style="width: 390px;">
+                <input id="cname" type="text" name="title" autocomplete="off" placeholder="请输入商品名称" class="layui-input goods-title">
+            </div>
+            <div class="layui-form-mid layui-word-aux">14个字以内</div>
+          </div>
+          <div class="layui-form-item  input-line" >
+            <label class="layui-form-label good-description">商品详情</label>
+            <div class="layui-input-block">
+                <textarea id="title" placeholder="请输入商品详情" class="layui-textarea goods-des"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item input-line" >
+            <label class="layui-form-label">价格</label>
+            <div class="layui-input-inline">
+                <input id="price" type="text" name="title" autocomplete="off" placeholder="请输入价格" class="layui-input price">
+            </div>
+            <div class="layui-form-mid layui-word-aux"></div>
+            <label class="layui-form-label" >原价</label>
+            <div class="layui-input-inline">
+                <input id="orgprice" type="text" name="title" autocomplete="off" placeholder="请输入原价" class="layui-input original-price">
+            </div>
+            <label class="layui-form-label" >成色</label>
+            <div class="layui-input-inline">
+                <input id="quality" type="text" name="title" autocomplete="off" placeholder="请输入成色" class="layui-input quality">
+            </div>
+            <div class="layui-form-mid layui-word-aux"></div>
+        </div>
+    
+        
+          <div class="layui-form-item input-line" >
+            <label class="layui-form-label">数量</label>
+            <div class="layui-input-block">
+                <input id="account" type="text" name="title" autocomplete="off" placeholder="请输入数量" class="layui-input account">
+            </div>
+
+        <div class="layui-form-item input-line" >
+            <label class="layui-form-label">交易地址</label>
+            <div class="layui-input-block">
+                <input id="address" type="text" name="title" autocomplete="off" placeholder="请输入交易地址" class="layui-input goods-address">
+            </div>
+          </div>
+        <div class="layui-form-item input-line" >
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-inline">
+                <input id="phoneNumber" type="text" name="title" autocomplete="off" placeholder="请输入手机号" class="layui-input phone-number" >
+            </div>
+            
+            
+          </div>
+        
+          <div class="publish-submit">
+              <button class="layui-btn submit"id="btn">确认发布</button>
+          </div>
+    </div>
+</div>
+
+</div>
+<!-- <script src="/js/lib/sitemap.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="/js/web/publish.js"></script>
+ -->
+
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $("#top-part").load("top-part.html");
+
+</script>
+<script>
+    
+    
+
+    
+    if(localStorage.getItem("goodsname")!=null){
+        getStorage();
+}
+
+    function getStorage(){
+        if(localStorage.getItem("goodsname")!=null){
+       // window.location.href="index.html";
+        console.log(localStorage.getItem("goodsname"));
+        
+        }
+        else{
+            
+        }
+    }
+    if(localStorage.getItem("goodscprice")!=null){
+        getStorage();
+}
+
+    function getStorage(){
+        if(localStorage.getItem("goodscprice")!=null){
+       // window.location.href="index.html";
+        console.log(localStorage.getItem("goodscprice"));
+        
+        }
+        else{
+            
+        }
+    }
+    </script>
+<script type="text/javascript">
+  var storage = window.localStorage
+$("#btn").on("click",function(){ 
+$.ajax({
+method:'POST',
+//dataType: 'jsonp',
+url:'http://192.168.43.237:8089/upload',//本地测试时，此处的url是相对于html文件的路径；实际开发时，替换url为接口文档中的地址即可
+data:{
+  cname:$("#cname").val(),
+ orgprice:$("#orgprice").val(),
+   cprice:$("#price").val(),
+   cquality:$("#quality").val(),
+   caddress:$("#address").val(),
+cnum:$("#account").val(),
+ctitle:$("#title").val(),
+phone:$("#phoneNumber").val(),
+idcode:localStorage.getItem("userID")
+
+
+},  //发起请求时所附带的参数
+success:function(data) {
+    console.log(data)
+    alert("发布成功");
+    window.location.href="index.html";
+    storage.setItem("goodsname",data.data.goods.cname);
+    storage.setItem("goodsid",data.data.goods.cidcode);
+    //storage.setItem("goodsorgprice",data.data.goods.orgprice);
+    storage.setItem("goodscprice",data.data.goods.cprice);
+    storage.setItem("goodscquality",data.data.goods.cquality);
+    //storage.setItem("goodscaddress",data.data.goods.caddress);
+    //storage.setItem("goodscnum",data.data.goods.cnum);
+
+}//请求成功后的回调函数。当data为JSON格式时，可能需要使用JSON.parse(data)进行解析
+});
+})
+
+</script>
+
+
+</html>

@@ -38,7 +38,7 @@
 {
     text-decoration: underline;
     font-weight: bold;
-    color: #e4393c;
+    color: #11c71a;
 }
 .topmenu .lihover /*鼠标移动到上面时，应用的样式*/
 {
@@ -49,7 +49,7 @@
     -webkit-box-shadow: 0 0 8px #DDD;
     background-image: none;
     height:60px;
-    border-left:4px solid #e4393c;
+    border-left:4px solid #12b32d;
     position: relative;
 }
 .topmenu .lihover .submenu /*悬浮层*/
@@ -109,7 +109,7 @@
 
 .leftdiv dl dt a
 {
-    color: #e4393c;
+    color: #16db20;
     font-weight: bold;
     text-decoration: underline;
     font-size: 10pt;
